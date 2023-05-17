@@ -1,0 +1,31 @@
+<p style="color: green"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<!-- Add a new HTML paragraph tag... -->
+<p>
+  <!-- With the post body embedded inside. -->
+  <strong>Body:</strong>
+  <%= @post.body %>
+</p>
+
+
+<div id="comments">
+  <h1>Comments</h1>
+  <div>
+    <%= render @post.comments %>
+    <h2>Add a Comment</h2>
+    <%= render partial: "comments/form", locals: {comment: @post.comments.new} %>
+  </div>
+</div>
+
+
+<div>
+  <%= link_to "Edit this post", edit_post_path(@post) %> |
+  <%= link_to "Back to posts", posts_path %>
+
+  <%= button_to "Destroy this post", @post, method: :delete %>
+</div>
